@@ -14,6 +14,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.annapaula.biblioteca.api.RetrofitClient
+import com.annapaula.biblioteca.ui.BuscaScreen
 import com.annapaula.biblioteca.ui.theme.BibliotecaAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -24,28 +25,10 @@ class MainActivity : ComponentActivity() {
 
             BibliotecaAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+
+                    BuscaScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    BibliotecaAppTheme {
-        Greeting("Android")
     }
 }
