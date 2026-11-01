@@ -15,6 +15,8 @@ data class Livro(
     @SerializedName("cover_i") val capaId: Int?,
     @SerializedName("subject") val assuntos: List<String>?
 ) {
-    fun urlCapa(): String? =
-        capaId?.let { "https://covers.openlibrary.org/b/id/$it-M.jpg" }
+    fun urlCapa(tamanho: String = "M"): String? =
+        capaId?.let { "https://covers.openlibrary.org/b/id/$it-$tamanho.jpg" }
+
+    fun idCurto(): String = chave.removePrefix("/works/")
 }

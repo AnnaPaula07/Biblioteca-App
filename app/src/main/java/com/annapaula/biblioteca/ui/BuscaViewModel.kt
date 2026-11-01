@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.annapaula.biblioteca.api.RetrofitClient
+import com.annapaula.biblioteca.model.Livro
 import kotlinx.coroutines.launch
 import java.io.IOException
 
@@ -17,7 +18,6 @@ class BuscaViewModel : ViewModel() {
     fun buscar(termo: String) {
         val termoLimpo = termo.trim()
 
-        // Validação da entrada
         if (termoLimpo.length < 2) {
             estado = BuscaUiState.Erro("Digite o nome do livro para buscar.")
             return
@@ -39,5 +39,11 @@ class BuscaViewModel : ViewModel() {
                 BuscaUiState.Erro("Não foi possível buscar os livros. Tente novamente.")
             }
         }
+    }
+
+    fun livroPorId(id: String?): Livro? {
+        val atual = estado
+        if (id == null || atual !is BuscaUiState.Sucesso) return null
+        return atual.livros.firstOrNull { it.idCurto() == id }
     }
 }
