@@ -14,6 +14,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.annapaula.biblioteca.api.RetrofitClient
+import com.annapaula.biblioteca.ui.AppNavigation
 import com.annapaula.biblioteca.ui.BuscaScreen
 import com.annapaula.biblioteca.ui.theme.BibliotecaAppTheme
 
@@ -25,8 +26,7 @@ class MainActivity : ComponentActivity() {
 
             BibliotecaAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-
-                    BuscaScreen(modifier = Modifier.padding(innerPadding))
+                    AppNavigation(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
